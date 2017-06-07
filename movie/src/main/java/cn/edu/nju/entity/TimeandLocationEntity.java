@@ -17,22 +17,22 @@ public class TimeandLocationEntity {
 	private int id;
 	private String movie_name;
 	private String resource;
-	private String Location;
+	private String hall;
 	private Timestamp time;
 	private double price;
 	private int remain_seat;
+	private int cinema_name;
 	
 
 	public TimeandLocationEntity() {
 
 	}
 
-	public TimeandLocationEntity(String movie_name, String resource, String location, Timestamp time, double price,
+	public TimeandLocationEntity(String movie_name, String resource, String hall, Timestamp time, double price,
 			int remain_seat) {
-		super();
 		this.movie_name = movie_name;
 		this.resource = resource;
-		Location = location;
+		hall = hall;
 		this.time = time;
 		this.price = price;
 		this.remain_seat = remain_seat;
@@ -73,14 +73,14 @@ public class TimeandLocationEntity {
 	}
 
 	@Basic
-    @Column(name = "location", nullable = false)
-	public String getLocation() {
-		return Location;
+    @Column(name = "hall", nullable = false)
+	public String getHall() {
+		return hall;
 	}
 
 
-	public void setLocation(String location) {
-		Location = location;
+	public void setHall(String hall) {
+		hall = hall;
 	}
 
 	@Basic
@@ -114,6 +114,15 @@ public class TimeandLocationEntity {
 
 	public void setRemain_seat(int remain_seat) {
 		this.remain_seat = remain_seat;
+	}
+	@Basic
+    @Column(name = "cinema_name", nullable = false)
+	public int getCinema_name() {
+		return cinema_name;
+	}
+
+	public void setCinema_name(int cinema_name) {
+		this.cinema_name = cinema_name;
 	}
 	
 	
