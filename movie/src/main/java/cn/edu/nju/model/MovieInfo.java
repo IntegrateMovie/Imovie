@@ -8,7 +8,7 @@ import java.util.List;
 public class MovieInfo {
 
     private String name;
-    private String mark;
+    private List<Mark> mark;
     private Cinema cinema;
     private List<Price> priceList;
 
@@ -28,11 +28,11 @@ public class MovieInfo {
         this.name = name;
     }
 
-    public String getMark() {
+    public List<Mark> getMark() {
         return mark;
     }
 
-    public void setMark(String mark) {
+    public void setMark(List<Mark> mark) {
         this.mark = mark;
     }
 
