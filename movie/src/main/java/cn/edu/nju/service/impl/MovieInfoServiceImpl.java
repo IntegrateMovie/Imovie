@@ -35,9 +35,9 @@ public class MovieInfoServiceImpl implements MovieInfoService {
     		String movie_name = entity.getMoive_name();
     		movieInfo.setName(movie_name);
     		//获取价格
-    		Price price1 = getlowest(movie_name,platform.Taobao.toString());
-    		Price price2 = getlowest(movie_name,platform.Alipay.toString());
-    		Price price3 = getlowest(movie_name,platform.Dianping.toString());
+    		Price price1 = getlowest(movie_name,platform1);
+    		Price price2 = getlowest(movie_name,platform2);
+    		Price price3 = getlowest(movie_name,platform3);
     		List<Price> priceList = new ArrayList<Price>();
     		priceList.add(price1);
     		priceList.add(price2);
@@ -45,9 +45,9 @@ public class MovieInfoServiceImpl implements MovieInfoService {
     		movieInfo.setPriceList(priceList);
     		//获取评分
     		List<Mark> markList = new ArrayList<Mark>();
-    		markList.add(computeMark(movie_name, platform.Taobao.toString()));
-    		markList.add(computeMark(movie_name, platform.Alipay.toString()));
-    		markList.add(computeMark(movie_name, platform.Dianping.toString()));
+    		markList.add(computeMark(movie_name, platform1));
+    		markList.add(computeMark(movie_name, platform2));
+    		markList.add(computeMark(movie_name, platform3));
     		
     		movieInfo.setMark(markList);
     		infos.add(movieInfo);
