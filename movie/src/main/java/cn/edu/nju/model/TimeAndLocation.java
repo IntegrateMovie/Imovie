@@ -3,13 +3,33 @@ package cn.edu.nju.model;
 import java.sql.Timestamp;
 
 public class TimeAndLocation {
-	
+	/**
+	 * 影院地址
+	 */
 	private String location;
+	/**
+	 * 放映厅
+	 */
 	private String hall;
+	/**
+	 * 本场次票价
+	 */
 	private String price;
+	/**
+	 * 平台
+	 */
 	private String platform;
+	/**
+	 * 放映开始时间
+	 */
 	private Timestamp time;
+	/**
+	 * 余座
+	 */
 	private String remain_seat;
+	/**
+	 * 电影院名
+	 */
 	private String cinema_name;
 	public String getLocation() {
 		return location;
