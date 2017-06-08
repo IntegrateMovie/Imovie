@@ -3,6 +3,7 @@ package cn.edu.nju.service.impl;
 import java.util.List;
 
 import cn.edu.nju.model.Cinema;
+import cn.edu.nju.model.CinemaAndPrice;
 import cn.edu.nju.model.TimeAndLocation;
 
 public interface TimeAndLocationService {
@@ -11,6 +12,6 @@ public interface TimeAndLocationService {
 	
 	Cinema cinemaInfo(int cinema_id);
 	
-	
+	List<CinemaAndPrice> cinemaAndPriceInfo(String movie_name);
 
 }

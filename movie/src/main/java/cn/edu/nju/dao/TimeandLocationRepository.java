@@ -16,4 +16,9 @@ public interface TimeandLocationRepository  extends CrudRepository<TimeandLocati
       
 	@Query("select a from TimeandLocationEntity a where a.movie_name = ?1 and a.cinema_id = ?2")
       List<TimeandLocationEntity> findByMovieAndCinema_id(String movie,int cinema_id);
+	@Query("select a from TimeandLocationEntity a where a.movie_name = ?1 and a.cinema_id = ?2 and a.resource = ?3")
+	 List<TimeandLocationEntity> findByMovie_nameAndCinema_idAndResource(String movie_name, int cinema_id,String resource);
+	@Query("select a from TimeandLocationEntity a where a.movie_name = ?1")
+      List<TimeandLocationEntity> findByMovie_name(String movie_name);
+	
 }

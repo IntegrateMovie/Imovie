@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.edu.nju.dao.CinemaRepository;
 import cn.edu.nju.dao.TimeandLocationRepository;
 import cn.edu.nju.entity.CinemaEntity;
 import cn.edu.nju.entity.TimeandLocationEntity;
 import cn.edu.nju.model.Cinema;
+import cn.edu.nju.model.CinemaAndPrice;
+import cn.edu.nju.model.Price;
 import cn.edu.nju.model.TimeAndLocation;
-
+@Service
 public class TimeAndLocationServiceImpl implements TimeAndLocationService {
 	@Autowired
 	private TimeandLocationRepository timeandLocationRepository; 
@@ -42,6 +45,58 @@ public class TimeAndLocationServiceImpl implements TimeAndLocationService {
 		c.setName(e.getName());
 		c.setLocation(e.getAddress());		
 		return c;
+	}
+
+	@Override
+	public List<CinemaAndPrice> cinemaAndPriceInfo(String movie_name) {
+		List<TimeandLocationEntity> entityList = timeandLocationRepository.findByMovie_name(movie_name);
+		ArrayList<Integer> cinema_ids  = new ArrayList<Integer>();
+		ArrayList<String> resources  = new ArrayList<String>();
+	   List<CinemaAndPrice> result = new ArrayList<>();
+		for(TimeandLocationEntity timeandLocationEntity:entityList){
+			if(!cinema_ids.contains(timeandLocationEntity.getCinema_id())){
+			cinema_ids.add(timeandLocationEntity.getCinema_id());
+			}
+			
+			if(!resources.contains(timeandLocationEntity.getResource())){
+				resources.add(timeandLocationEntity.getResource());
+			}
+		}
+		
+	for(int i = 0;i<cinema_ids.size();i++){
+		CinemaAndPrice cinemaAndPrice = new CinemaAndPrice();
+		CinemaEntity e =   cinemaRepository.findOne(cinema_ids.get(i));
+		cinemaAndPrice.setCinema_id(e.getId()+"");
+		cinemaAndPrice.setCinema_name(e.getName());
+		cinemaAndPrice.setCinema_address(e.getAddress());	
+		List<Price> priceList = new ArrayList<>();
+		//根据影院和电影和平台，找到最低价	
+		for(String resource:resources){
+			Price price = getlowest(movie_name,cinema_ids.get(i),resource);
+			priceList.add(price);
+		}
+		cinemaAndPrice.setLowestPriceForEachPlatform(priceList);
+		result.add(cinemaAndPrice);
+	}
+	
+		return result;
+	}
+	
+	private Price getlowest(String movie_name, int cinema_id, String resource){
+		List<TimeandLocationEntity> entityList = timeandLocationRepository.findByMovie_nameAndCinema_idAndResource(movie_name, cinema_id, resource);
+		Price price = new Price();
+		price.setPlatform(resource);
+		double lowestprice = entityList.get(0).getPrice();
+		for(TimeandLocationEntity t:entityList){
+			if(t.getPrice()<lowestprice){
+				lowestprice = t.getPrice();
+			}
+			
+		}
+		
+		price.setPrice(lowestprice+"");
+		
+		return price;
 	}
 
 }
