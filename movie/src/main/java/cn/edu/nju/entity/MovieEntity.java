@@ -23,5 +23,11 @@ public class MovieEntity implements Serializable {
 	public String getMoive_name() {
 		return moive_name;
 	}
+
+	public void setMoive_name(String moive_name) {
+		this.moive_name = moive_name;
+	}
+    
+    
  
 }

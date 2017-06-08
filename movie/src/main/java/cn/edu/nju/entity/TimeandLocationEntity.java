@@ -21,7 +21,7 @@ public class TimeandLocationEntity {
 	private Timestamp time;
 	private double price;
 	private int remain_seat;
-	private int cinema_name;
+	private int cinema_id;
 	
 
 	public TimeandLocationEntity() {
@@ -51,7 +51,7 @@ public class TimeandLocationEntity {
 	}
 
 	@Basic
-    @Column(name = "movie", nullable = false)
+    @Column(name = "movie_name", nullable = false)
 	public String getMovie_name() {
 		return movie_name;
 	}
@@ -116,13 +116,13 @@ public class TimeandLocationEntity {
 		this.remain_seat = remain_seat;
 	}
 	@Basic
-    @Column(name = "cinema_name", nullable = false)
-	public int getCinema_name() {
-		return cinema_name;
+    @Column(name = "cinema_id", nullable = false)
+	public int getCinema_id() {
+		return cinema_id;
 	}
 
-	public void setCinema_name(int cinema_name) {
-		this.cinema_name = cinema_name;
+	public void setCinema_id(int cinema_id) {
+		this.cinema_id = cinema_id;
 	}
 	
 	

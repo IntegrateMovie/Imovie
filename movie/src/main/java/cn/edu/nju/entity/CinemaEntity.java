@@ -8,7 +8,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+@Table(name = "cinema_info", schema = "movie", catalog = "")
 public class CinemaEntity implements Serializable {
 
 	@GeneratedValue
@@ -16,10 +16,10 @@ public class CinemaEntity implements Serializable {
     @Column(name = "id", nullable = false)
 	private int id;
 	@Basic
-    @Column(name = "name", nullable = true)
+    @Column(name = "name", nullable = false)
 	private String name;
 	@Basic
-    @Column(name = "name", nullable = true)
+    @Column(name = "address", nullable = false)
 	private String address;
 
 	public CinemaEntity() {
