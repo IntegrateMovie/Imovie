@@ -7,7 +7,7 @@ import cn.edu.nju.model.Cinema;
 import cn.edu.nju.model.CinemaAndPrice;
 import cn.edu.nju.model.TimeAndLocation;
 
-public interface TimeAndLocationService {
+public interface  TimeAndLocationService {
 	/**
 	 * 电影的具体场次信息（电影院，电影院地址（如果在前一页显示了在具体场次信息可以不显示），放映厅，时间，余座，平台，票价）
 	 * @param movie_name
