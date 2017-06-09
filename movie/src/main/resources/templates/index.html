@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1"/>-->
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="../../static/css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" href="../../static/css/hotel.css" th:href="@{/css/hotel.css}"/>
+    <link rel="stylesheet" href="../../static/css/other.css" th:href="@{/css/other.css}"/>
+    <title>热映电影</title>
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html" th:href="@{index}">热映电影</a>
+        </div>
+    </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+</nav>
+
+<div class="mainpage">
+
+    <div class="panel panel-info">
+        <!-- Default panel contents -->
+        <div class="panel-heading">电影信息</div>
+
+
+        <div class="table-responsive ">
+            <table id="roomTable" class="table table-hover">
+                <tr>
+                    <th>电影名称</th>
+                    <th>评分</th>
+                    <th>平台1</th>
+                    <th>平台2</th>
+                    <th>平台3</th>
+                </tr>
+                <tr th:each="movie : ${movieInfo}" >
+                    <td th:text="${movie.name}">加勒比海盗</td>
+                    <!--&lt;!&ndash;<td th:text="${reserveMes.time}">2016-3-19</td>&ndash;&gt;-->
+                    <td th:text="${movie.mark}">2016-3-19
+                        12:23:23
+                    </td>
+                    <td th:text="(${movie.price1})">23元起
+                    </td>  
+                   <td th:text="(${movie.price2})">23元起</td>
+                   <td th:text="(${movie.price3})">23元起</td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+    <div>
+        <a href="javascript:" class="btn btn-primary my-pop-1">Add new records</a>
+    </div>
+</div>
+</body>
+</html>

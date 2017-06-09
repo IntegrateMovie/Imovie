@@ -24,10 +24,16 @@ public class MovieInfoServiceImpl implements MovieInfoService {
     private TimeandLocationRepository timeandLocationRepository;
     @Autowired
     private  CommentRepository  commentRepository;
+    
+    public static void main(String[] args){
+    	MovieInfoService service = new MovieInfoServiceImpl();
+    	//service.movieGeneralList("taobao", platform2, platform3)
+    }
 
 	@Override
 	public List<MovieInfo> movieGeneralList(String platform1, String platform2, String platform3) {
-    	List<MovieEntity> movieEntitys = (List<MovieEntity>) movieInfoRepository.findAll();
+		System.out.println(movieInfoRepository.findAll().size());
+    	List<MovieEntity> movieEntitys =  movieInfoRepository.findAll();
     	List<MovieInfo> infos = new ArrayList<MovieInfo>();
     	for(MovieEntity entity:movieEntitys){
     		//对每一个电影进行取数据查询
@@ -44,12 +50,8 @@ public class MovieInfoServiceImpl implements MovieInfoService {
     		priceList.add(price3);
     		movieInfo.setPriceList(priceList);
     		//获取评分
-    		List<Mark> markList = new ArrayList<Mark>();
-    		markList.add(computeMark(movie_name, platform1));
-    		markList.add(computeMark(movie_name, platform2));
-    		markList.add(computeMark(movie_name, platform3));
-    		
-    		movieInfo.setMark(markList);
+    		List<Mark> markList = new ArrayList<Mark>();   		
+    		movieInfo.setMark(computeMark(movie_name, platform1)+"");
     		infos.add(movieInfo);
     		
     	}

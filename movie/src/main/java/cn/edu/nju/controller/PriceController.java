@@ -2,6 +2,10 @@ package cn.edu.nju.controller;
 
 import cn.edu.nju.model.*;
 import cn.edu.nju.service.impl.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,25 +16,30 @@ import java.util.List;
 /**
  * Created by 11946 on 2017/6/5.
  */
-@org.springframework.stereotype.Controller
-@RequestMapping("/json")
+@Controller
+
 public class PriceController {
+	 @Autowired
+    private MovieInfoService movieInfoService;
+	 @Autowired
+    private CommentService commentService ;
+	 @Autowired
+    private TimeAndLocationService timeAndLocationService;
 
-    private MovieInfoService movieInfoService = new MovieInfoServiceImpl();
-    private CommentService commentService = new CommentServiceImpl();
-    private TimeAndLocationService timeAndLocationService = new TimeAndLocationServiceImpl();
-
-    @ResponseBody
-    @RequestMapping(value="/getPriceList",method= RequestMethod.POST)
-    public List<MovieInfo > getPriceList(@RequestParam(value="platfrom1") String platform1, @RequestParam(value="platform2") String platform2 , @RequestParam(value="platform3")
-                                         String platform3){
-        return movieInfoService.movieGeneralList(platform1,platform2,platform3);
+  
+    @RequestMapping({"/" , "/index"})
+    public String getPriceList(Model model){
+    	System.out.println("index pages");
+    	List<MovieInfo> movieInfo = movieInfoService.movieGeneralList("taobao", "zhifubao", "dazhongdianping");
+    	model.addAttribute("movieInfo", movieInfo);   	
+        return "/index";
     }
 
     @ResponseBody
     @RequestMapping(value="/getComment", method=RequestMethod.GET)
-    public List<Comment> getComment(@RequestParam(value="movieName") String movieName, @RequestParam(value="platform") String platform){
-        return commentService.getComment(movieName, platform);
+    public String getComment(@RequestParam(value="movieName") String movieName, @RequestParam(value="platform") String platform,Model model){
+       
+    	return "/getComment";
     }
 
     @ResponseBody
