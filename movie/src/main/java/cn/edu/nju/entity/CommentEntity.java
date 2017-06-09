@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Type;
+
 /**
  * Entity implementation class for Entity: CommentEntity
  *
@@ -59,7 +61,7 @@ public class CommentEntity implements Serializable {
 	}
 
 	 @Basic
-	 @Column(name = "comment", nullable = false)
+	 @Column(name = "comment", nullable = false,columnDefinition = "text")
 	public String getComment() {
 		return comment;
 	}
