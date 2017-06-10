@@ -32,6 +32,7 @@ public class PriceController {
     @RequestMapping({"/" , "/index"})
     public String getPriceList(Model model){
     	System.out.println("index pages");
+    	//TODO
     	List<MovieInfo> movieInfo = movieInfoService.movieGeneralList("taobao", "zhifubao", "dazhongdianping");
     	model.addAttribute("movieInfo", movieInfo);   	
         return "/index";

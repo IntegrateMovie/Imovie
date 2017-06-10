@@ -68,7 +68,8 @@ public class TimeAndLocationServiceImpl implements TimeAndLocationService {
 		
 	for(int i = 0;i<cinema_ids.size();i++){
 		CinemaAndPrice cinemaAndPrice = new CinemaAndPrice();
-		CinemaEntity e =   cinemaRepository.findOne(cinema_ids.get(i));
+		CinemaEntity e = new CinemaEntity();
+		 e =   cinemaRepository.findOne(cinema_ids.get(i));
 		cinemaAndPrice.setCinema_id(e.getId()+"");
 		cinemaAndPrice.setCinema_name(e.getName());
 		cinemaAndPrice.setCinema_address(e.getAddress());	
@@ -89,15 +90,18 @@ public class TimeAndLocationServiceImpl implements TimeAndLocationService {
 		List<TimeandLocationEntity> entityList = timeandLocationRepository.findByMovie_nameAndCinema_idAndResource(movie_name, cinema_id, resource);
 		Price price = new Price();
 		price.setPlatform(resource);
-		double lowestprice = entityList.get(0).getPrice();
+		double lowestprice = 1000000;
 		for(TimeandLocationEntity t:entityList){
 			if(t.getPrice()<lowestprice){
 				lowestprice = t.getPrice();
 			}
 			
 		}
-		
+		if(lowestprice != 1000000)
 		price.setPrice(lowestprice+"");
+		else{
+			price.setPrice("无出售");
+		}
 		
 		return price;
 	}

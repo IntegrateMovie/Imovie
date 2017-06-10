@@ -50,9 +50,8 @@ public class MovieInfoServiceImpl implements MovieInfoService {
     		priceList.add(price2);
     		priceList.add(price3);
     		movieInfo.setPriceList(priceList);
-    		//获取评分
-    		List<Mark> markList = new ArrayList<Mark>();   		
-    		movieInfo.setMark(computeMark(movie_name, platform1)+"");
+    		//获取评分   		
+    		movieInfo.setMark(computeMark(movie_name, platform1).getMark());
     		infos.add(movieInfo);
     		
     	}
@@ -65,13 +64,16 @@ public class MovieInfoServiceImpl implements MovieInfoService {
     	
     	Price price = new Price();
     	
-    	double lowest=list.get(0).getPrice();
+    	double lowest=10000000;
     	price.setPlatform(platform);
     	for(TimeandLocationEntity entity:list){
     		if(entity.getPrice()<lowest){
     			lowest = entity.getPrice();
     		}
-        price.setPrice(lowest+"");			
+    		if(lowest != 10000000)
+           price.setPrice(lowest+"");
+    		else
+    			 price.setPrice("无出售");
     	}
 		return price;
     }
@@ -79,12 +81,16 @@ public class MovieInfoServiceImpl implements MovieInfoService {
     private Mark computeMark(String movie_name, String platform){
     	Mark mark = new Mark();
     	mark.setPlatform(platform);
-    	List<CommentEntity> comments = commentRepository.findByNameAndResource(movie_name, platform);
+    	List<CommentEntity> comments = new ArrayList<>();
+        comments = commentRepository.findByNameAndResource(movie_name, platform);
     	double sum = 0;
     	for(CommentEntity entity: comments){
     		sum+=entity.getGrade();
     	}
-    	mark.setMark(sum/comments.size()+"");   	
+    	if(comments.size()!=0)
+    	mark.setMark(sum/comments.size()+""); 
+    	else
+        mark.setMark("6.5"); 
 		return mark;	
     }
     

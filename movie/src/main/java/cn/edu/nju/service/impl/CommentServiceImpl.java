@@ -16,7 +16,8 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public List<Comment> getComment(String movie_name, String Platform) {
-		List<CommentEntity> comments = commentRepository.findByNameAndResource(movie_name, Platform);
+		List<CommentEntity> comments = new ArrayList<>();
+		 comments = commentRepository.findByNameAndResource(movie_name, Platform);
 		List<Comment> commentList = new ArrayList<Comment>();
 		for(CommentEntity e:comments){
 			Comment comment = new Comment();
