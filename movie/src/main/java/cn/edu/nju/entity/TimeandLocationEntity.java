@@ -124,6 +124,63 @@ public class TimeandLocationEntity {
 	public void setCinema_id(int cinema_id) {
 		this.cinema_id = cinema_id;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + cinema_id;
+		result = prime * result + ((hall == null) ? 0 : hall.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((movie_name == null) ? 0 : movie_name.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + remain_seat;
+		result = prime * result + ((resource == null) ? 0 : resource.hashCode());
+		result = prime * result + ((time == null) ? 0 : time.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TimeandLocationEntity other = (TimeandLocationEntity) obj;
+		if (cinema_id != other.cinema_id)
+			return false;
+		if (hall == null) {
+			if (other.hall != null)
+				return false;
+		} else if (!hall.equals(other.hall))
+			return false;
+		if (id != other.id)
+			return false;
+		if (movie_name == null) {
+			if (other.movie_name != null)
+				return false;
+		} else if (!movie_name.equals(other.movie_name))
+			return false;
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+			return false;
+		if (remain_seat != other.remain_seat)
+			return false;
+		if (resource == null) {
+			if (other.resource != null)
+				return false;
+		} else if (!resource.equals(other.resource))
+			return false;
+		if (time == null) {
+			if (other.time != null)
+				return false;
+		} else if (!time.equals(other.time))
+			return false;
+		return true;
+	}
 	
 	
    

@@ -40,7 +40,7 @@ public class MovieInfoServiceImpl implements MovieInfoService {
     		MovieInfo movieInfo = new MovieInfo();
     		String movie_name = entity.getMoive_name();
     		movieInfo.setName(movie_name);
-    		System.out.println("加勒比");
+    		System.out.println(movie_name);
     		//获取价格
     		Price price1 = getlowest(movie_name,platform1);
     		Price price2 = getlowest(movie_name,platform2);

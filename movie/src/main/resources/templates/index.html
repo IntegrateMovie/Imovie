@@ -64,8 +64,11 @@
     <tbody>
     <tr th:each="movie : ${movieInfo}" >
 
-      <form name="sentMessage" id="contactForm" method="get" role="form" action="Cinema.html" th:action="@{/cinema}" >
-          <td th:text="${movie.name}" name="movieid">加勒比海盗</td>
+      <!--<form name="sentMessage" id="contactForm" method="get" role="form" action="Cinema.html" th:action="@{/cinema}" >-->
+          <td th:text="${movie.name}">
+
+            <a href="/cinema?moviename='+${movie.name}+'">加勒比海盗</a>
+            </td>
 
         <!--&lt;!&ndash;<td th:text="${reserveMes.time}">2016-3-19</td>&ndash;&gt;-->
         <td th:text="${movie.mark}">2016-3-19
@@ -77,17 +80,17 @@
         <td th:text="(${movie.price3})">23元起</td>
 
 
-        <div class="form-group">
-          <input type="moviename" class="form-control" name="moviename" id="moviename" style="display:none" />
-          document.getElementById("moviename").value=$('#movieid'); 
-       
-        </div>
+        <!--<div class="form-group">-->
+          <!--<input type="moviename" class="form-control" name="moviename" id="moviename" style="display:none" />-->
+          <!--document.getElementById("moviename").value=docume; -->
+       <!---->
+        <!--</div>-->
 
-        <td>
-          <button type="submit" class=" btn btn-success">查看详情</button>
-        </td>
+        <!--<td>-->
+          <!--<button type="submit" class=" btn btn-success">查看详情</button>-->
+        <!--</td>-->
 
-      </form>
+      <!--</form>-->
     </tr>
     </tbody>
   </table>
