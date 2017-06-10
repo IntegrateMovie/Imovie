@@ -8,13 +8,14 @@
         <class>cn.edu.nju.entity.CinemaEntity</class>
         <class>cn.edu.nju.entity.TimeandLocationEntity</class>
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/movie？autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF8"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/movie?useUnicode=true&amp;characterEncoding=UTF-8"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
             <property name="hibernate.connection.username" value=""/>
             <property name="hibernate.connection.password" value=""/>
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.dialect" value="cn.edu.nju.util.MySQL5DialectUTF8" /> 
             <property name="hbm2ddl.auto" value="update"/>
             <property name="connection.useUnicode" value="true"/> 
             <property name="connection.characterEncoding" value="UTF-8"/> 

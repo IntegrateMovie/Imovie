@@ -6,6 +6,7 @@ import java.util.List;
 import cn.edu.nju.model.Cinema;
 import cn.edu.nju.model.CinemaAndPrice;
 import cn.edu.nju.model.TimeAndLocation;
+import cn.edu.nju.util.MySQL5DialectUTF8;
 
 public interface  TimeAndLocationService {
 	/**
@@ -16,7 +17,7 @@ public interface  TimeAndLocationService {
 	 */
 	List<TimeAndLocation> timeAndLocationLits(String movie_name, int cinema_id);
 	
-
+	
 	/**
 	 * 根据电影院id获得电影院信息（电影院名字，地址）
 	 * @param cinema_id
