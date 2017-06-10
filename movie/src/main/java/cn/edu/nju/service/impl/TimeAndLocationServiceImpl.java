@@ -24,6 +24,9 @@ public class TimeAndLocationServiceImpl implements TimeAndLocationService {
 	@Override
 	public List<TimeAndLocation> timeAndLocationLits(String movie_name, int cinema_id) {
 		List<TimeandLocationEntity> entityList = timeandLocationRepository.findByMovieAndCinema_id(movie_name, cinema_id);
+		System.out.println("service  "+movie_name);
+		System.out.println("cinema_id   "+cinema_id);
+		System.out.println("service size"+entityList.size());
 		List<TimeAndLocation> result = new ArrayList<TimeAndLocation>();
 		List<Timestamp> timeList = new ArrayList<>();
 		
@@ -31,10 +34,12 @@ public class TimeAndLocationServiceImpl implements TimeAndLocationService {
 			TimeAndLocation t = new TimeAndLocation();
 			t.setHall(e.getHall());
 		    t.setTime(e.getTime());
+	        t.setPrice1(e.getPrice()+"元");
+	        t.setPlatform(e.getResource());
 		    t.setRemain_seat(e.getRemain_seat()+"");	
 		    t.setLocation(cinemaInfo(cinema_id).getLocation());
 		    t.setCinema_name(cinemaInfo(cinema_id).getName());
-		    
+		    result.add(t);
 		    
 		}
 		return result;

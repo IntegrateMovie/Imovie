@@ -47,11 +47,13 @@ public class PriceController {
     }
 
     
-    @RequestMapping(value="/timeAndLocation", method=RequestMethod.GET)
+    @RequestMapping(value="/detail", method=RequestMethod.GET)
     public String getTimeAndLocation(HttpSession session, @RequestParam(value="cinemaid") String cinemaid,Model model){
+    	System.out.println("cinemaid"+cinemaid);
         List<TimeAndLocation> list = timeAndLocationService.timeAndLocationLits(session.getAttribute("moviename").toString(),Integer.parseInt(cinemaid));
+        System.out.println("controllersize   "+list.size());
         model.addAttribute("timeAndLocation", list);
-        return "/timeAndLocation";
+        return "/detail";
     }
 
     @ResponseBody
