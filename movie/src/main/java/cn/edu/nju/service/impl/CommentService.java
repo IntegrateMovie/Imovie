@@ -11,5 +11,5 @@ public interface CommentService {
 	 * @param Platform
 	 * @return
 	 */
-	List<Comment> getComment(String movie_name, String Platform);
+	List<Comment> getComment(String movie_name);
 }

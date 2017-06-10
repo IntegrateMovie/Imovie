@@ -9,7 +9,7 @@ import cn.edu.nju.entity.CommentEntity;
 
 public interface CommentRepository  extends PagingAndSortingRepository<CommentEntity, Integer>{
 	
-	@Query("select a from CommentEntity a where a.movie_name = ?1 and a.resource = ?2")
-	List<CommentEntity> findByNameAndResource(String movie_name,String resource);
+	@Query("select a from CommentEntity a where a.movie_name = ?1")
+	List<CommentEntity> findByNameAndResource(String movie_name);
 
 }

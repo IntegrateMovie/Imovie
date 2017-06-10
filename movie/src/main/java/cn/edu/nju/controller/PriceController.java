@@ -38,21 +38,24 @@ public class PriceController {
         return "/index";
     }
 
-    @ResponseBody
+    
     @RequestMapping(value="/getComment", method=RequestMethod.GET)
-    public String getComment(@RequestParam(value="movieName") String movieName, @RequestParam(value="platform") String platform,Model model){
-       
+    public String getComment(@RequestParam(value="movieName") String movieName, Model model){
+       List<Comment> commentList = commentService.getComment(movieName);
+       model.addAttribute("commentList",commentList);
     	return "/getComment";
     }
 
-    @ResponseBody
-    @RequestMapping(value="/getTimeAndLocation", method=RequestMethod.GET)
-    public List<TimeAndLocation> getTimeAndLocation(@RequestParam(value="movieName") String movieName, @RequestParam(value="cinemaid") int cinemaid){
-        return timeAndLocationService.timeAndLocationLits(movieName,cinemaid);
+    
+    @RequestMapping(value="/timeAndLocation", method=RequestMethod.GET)
+    public String getTimeAndLocation(HttpSession session, @RequestParam(value="cinemaid") String cinemaid,Model model){
+        List<TimeAndLocation> list = timeAndLocationService.timeAndLocationLits(session.getAttribute("moviename").toString(),Integer.parseInt(cinemaid));
+        model.addAttribute("timeAndLocation", list);
+        return "/timeAndLocation";
     }
 
     @ResponseBody
-    @RequestMapping(value="/getCinemaInfo", method=RequestMethod.GET)
+    @RequestMapping(value="/getCine", method=RequestMethod.GET)
     public Cinema getCinemaInfo(@RequestParam(value="cinemaId") int cinemaId){
         return timeAndLocationService.cinemaInfo(cinemaId);
     }
@@ -61,6 +64,7 @@ public class PriceController {
     @RequestMapping(value="/cinema", method=RequestMethod.GET)
     public String getCinemaAndPrice(HttpSession session,@RequestParam(value="moviename") String movieName,Model model){
     	System.out.println(" movieName： "+ movieName);
+    	session.setAttribute("moviename", movieName);
     	// session.setAttribute();
     	List<CinemaAndPrice>  list =  timeAndLocationService.cinemaAndPriceInfo(movieName);
     	model.addAttribute("cinemaInfo", list);

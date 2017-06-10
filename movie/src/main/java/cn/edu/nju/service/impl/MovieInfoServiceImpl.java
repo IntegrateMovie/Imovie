@@ -51,7 +51,7 @@ public class MovieInfoServiceImpl implements MovieInfoService {
     		priceList.add(price3);
     		movieInfo.setPriceList(priceList);
     		//获取评分   		
-    		movieInfo.setMark(computeMark(movie_name, platform1).getMark());
+    		movieInfo.setMark(computeMark(movie_name).getMark());
     		infos.add(movieInfo);
     		
     	}
@@ -78,11 +78,11 @@ public class MovieInfoServiceImpl implements MovieInfoService {
 		return price;
     }
     
-    private Mark computeMark(String movie_name, String platform){
+    private Mark computeMark(String movie_name){
     	Mark mark = new Mark();
-    	mark.setPlatform(platform);
+    	mark.setPlatform("only");
     	List<CommentEntity> comments = new ArrayList<>();
-        comments = commentRepository.findByNameAndResource(movie_name, platform);
+        comments = commentRepository.findByNameAndResource(movie_name);
     	double sum = 0;
     	for(CommentEntity entity: comments){
     		sum+=entity.getGrade();
