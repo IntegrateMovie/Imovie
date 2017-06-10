@@ -14,7 +14,11 @@ public class TimeAndLocation {
 	/**
 	 * 本场次票价
 	 */
-	private String price;
+	private String price1;
+	
+	private String price2;
+	
+	private String price3;
 	/**
 	 * 平台
 	 */
@@ -43,11 +47,25 @@ public class TimeAndLocation {
 	public void setHall(String hall) {
 		this.hall = hall;
 	}
-	public String getPrice() {
-		return price;
+	public String getPrice1() {
+		return price1;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+	public void setPrice1(String price) {
+		this.price1 = price;
+	}
+	
+	public String getPrice2() {
+		return price1;
+	}
+	public void setPrice2(String price) {
+		this.price2 = price;
+	}
+	
+	public String getPrice3() {
+		return price1;
+	}
+	public void setPrice3(String price) {
+		this.price1 = price;
 	}
 	public String getPlatform() {
 		return platform;

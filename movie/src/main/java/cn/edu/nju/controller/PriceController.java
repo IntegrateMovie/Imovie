@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by 11946 on 2017/6/5.
  */
@@ -54,10 +56,15 @@ public class PriceController {
         return timeAndLocationService.cinemaInfo(cinemaId);
     }
 
-    @ResponseBody
-    @RequestMapping(value="/getCinemaAndPriceInfo", method=RequestMethod.GET)
-    public List<CinemaAndPrice> getCinemaAndPrice(@RequestParam(value="cinemaName") String cinemaName){
-        return timeAndLocationService.cinemaAndPriceInfo(cinemaName);
+    
+    @RequestMapping(value="/cinema", method=RequestMethod.GET)
+    public String getCinemaAndPrice(HttpSession session,@RequestParam(value="moviename") String movieName,Model model){
+    	System.out.println(" movieName： "+ movieName);
+    	// session.setAttribute();
+    	List<CinemaAndPrice>  list =  timeAndLocationService.cinemaAndPriceInfo(movieName);
+    	model.addAttribute("cinemaInfo", list);
+    	
+        return "/cinema";
     }
 
 }
