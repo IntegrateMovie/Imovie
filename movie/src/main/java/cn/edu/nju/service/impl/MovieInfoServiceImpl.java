@@ -1,5 +1,7 @@
 package cn.edu.nju.service.impl;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +75,7 @@ public class MovieInfoServiceImpl implements MovieInfoService {
     		if(lowest != 10000000)
            price.setPrice(lowest+"");
     		else
-    			 price.setPrice("无出售");
+    			 price.setPrice("－－");
     	}
 		return price;
     }
@@ -88,10 +90,17 @@ public class MovieInfoServiceImpl implements MovieInfoService {
     		sum+=entity.getGrade();
     	}
     	if(comments.size()!=0)
-    	mark.setMark(sum/comments.size()+""); 
+    	mark.setMark(changeDouble(sum/comments.size())); 
     	else
         mark.setMark("6.5"); 
 		return mark;	
+    }
+    
+    
+    private String changeDouble(Double dou){
+        NumberFormat   nf=new  DecimalFormat( "0.0 "); 
+        dou = Double.parseDouble(nf.format(dou));
+        return dou+"";
     }
     
     

@@ -33,7 +33,7 @@ public class PriceController {
     public String getPriceList(Model model){
     	System.out.println("index pages");
     	//TODO
-    	List<MovieInfo> movieInfo = movieInfoService.movieGeneralList("taobao", "zhifubao", "dazhongdianping");
+    	List<MovieInfo> movieInfo = movieInfoService.movieGeneralList("淘票票", "时光网", "百度糯米");
     	model.addAttribute("movieInfo", movieInfo);   	
         return "/index";
     }
