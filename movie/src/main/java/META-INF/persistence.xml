@@ -3,22 +3,30 @@
 
     <persistence-unit name="NewPersistenceUnit">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>cn.edu.nju.entity.CommentEntity</class>
-        <class>cn.edu.nju.entity.MovieEntity</class>
-        <class>cn.edu.nju.entity.CinemaEntity</class>
-        <class>cn.edu.nju.entity.TimeandLocationEntity</class>
+        <class>cn.edu.nju.entity.AccountEntity</class>
+        <class>cn.edu.nju.entity.HotelEntity</class>
+        <class>cn.edu.nju.entity.HotelNewEntity</class>
+        <class>cn.edu.nju.entity.LiveMesEntity</class>
+        <class>cn.edu.nju.entity.MemberEntity</class>
+        <class>cn.edu.nju.entity.ModifyApplicationEntity</class>
+        <class>cn.edu.nju.entity.OpenApplicationEntity</class>
+        <class>cn.edu.nju.entity.ReservedEntity</class>
+        <class>cn.edu.nju.entity.RoomsEntity</class>
+        <class>cn.edu.nju.entity.PayRecordEntity</class>
+        <class>cn.edu.nju.entity.RechargeEntity</class>
+        <class>cn.edu.nju.entity.PointConvertEntity</class>
+        <class>cn.edu.nju.entity.SettlementEntity</class>
+        <class>cn.edu.nju.entity.HotelmanagementEntity</class>
+        <class>cn.edu.nju.entity.BillEntity</class>>
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/movie?useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/hotel"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
             <property name="hibernate.connection.username" value=""/>
             <property name="hibernate.connection.password" value=""/>
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.dialect" value="cn.edu.nju.util.MySQL5DialectUTF8" /> 
             <property name="hbm2ddl.auto" value="update"/>
-            <property name="connection.useUnicode" value="true"/> 
-            <property name="connection.characterEncoding" value="UTF-8"/> 
         </properties>
     </persistence-unit>
 </persistence>
